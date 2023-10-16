@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="data:,">
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form">
+                <h2>ACESSE SUA CONTA</h2>
+                <input type="text" required placeholder="Usuário" id="user" autocomplete="off" />
+                <!-- Troquei a tag img por uma div -->
+                <div class="password-container">
+                    <input oninput="return formvalid()" type="password" required placeholder="Senha" id="pass" autocomplete="off"/>
+                    <div id="showimg" onclick="show()"></div>
+                </div>                  
+                <span id="vaild-pass"></span>
+                <button type="submit" id="submitButton">Entrar</button>
+                <p class="message"><a href="#">Esqueceu sua senha?</a></p>
+            </form>
+        </div>
+    </div>
+    <!-- =========== Scripts =========  -->
+    <script src="../js/login.js"></script>
+</body>
+
+</html>
