@@ -8,7 +8,7 @@
 
 }
 body{
-    background: #6a62d2;
+    background: linear-gradient(to left, rgb(99, 31, 152), rgb(59, 11, 122));
 }
 
 #showimg {
@@ -40,10 +40,9 @@ body{
 
 .form {
   position: relative;
-  filter:drop-shadow(0 0 2px #000000);
-  border-radius: 5px;
+  border-radius: 0px 5px 5px 0px;
   width: 360px;
-  height: 420px;
+  height: 500px;
   background-color: #ffffff;
   padding:40px;
 }
@@ -79,7 +78,7 @@ span {
 
 .form button {
     outline: 0;
-    background: #6a62d2;
+    background: rgb(99, 31, 152);
     width: 100%;
     border: 0;
     margin-top: 10px;
@@ -110,3 +109,18 @@ span {
     color: #6a62d2;
     text-decoration: none;
 }
+
+.img{
+    height: 500px;
+    margin-top: 6px;
+    margin-bottom: -1px;
+    filter: brightness(0.7) opacity(0.8);
+    border-radius: 5px 0px 0px 5px;
+
+}
+
+@media (max-width: 768px) {
+    .img{
+        display: none;
+    }
+  }
