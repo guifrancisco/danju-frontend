@@ -27,26 +27,37 @@ function show() {
 
 async function onLogin(url = "http://localhost:8080/v1/auth/login") {
 
-  var username = document.getElementById("user").value;
-  var password = document.getElementById("pass").value;
-  var data = {username, password}
+    var login = document.getElementById("user").value;
+    var password = document.getElementById("pass").value;
+    var data = { login, password };
 
-  const response = await fetch(url, {
-    method: "POST", 
-    mode: "cors", 
-    cache: "no-cache", 
-    credentials: "same-origin", 
-    headers: {
-      "Content-Type": "application/json",
-      
-    },
-    redirect: "follow",
-    referrerPolicy: "no-referrer", 
-    body: JSON.stringify(data), 
-  });
-  return response.json(); 
+    console.log("Sending data:", data);
+
+    const response = await fetch(url, {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+        throw new Error(`Server responded with status: ${response.status}`);
+    }
+
+    const responseData = await response.json();
+    console.log("Received response:", responseData);
+
+    if (responseData.token) {
+        window.location.href = "http://localhost:5500/pages/main.html"; 
+    } 
+    return responseData;
+
 }
-
 
 // Inicializar com o SVG "ocultar"
 document.addEventListener("DOMContentLoaded", function() {
@@ -55,10 +66,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // Inicializar o envio de dados para o servidor
-document.addEventListener("DOMContentLoaded", function() {
-    var submitButton = document.getElementById("submitButton");
-    
-    submitButton.addEventListener("click", function() {
-        onLogin();
-    });
+document.querySelector('.login-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    await onLogin();
 });
+
